@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tailwind CSS — Complete Values Reference | HSam E-Learning</title>
+<meta name="description" content="A live, interactive reference of every Tailwind CSS utility value — spacing, colors, typography, layout, states — built for HSam E-learning's Web Development track." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          hsam: {
+            blue: '#2661A8',
+            navy: '#12233D',
+            mid: '#1A3A63',
+            gold: '#D4A72C',
+          }
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  .bg-checker {
+    background-image:
+      linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+      linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+      linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  }
+  .dark .bg-checker {
+    background-image:
+      linear-gradient(45deg, #334155 25%, transparent 25%),
+      linear-gradient(-45deg, #334155 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #334155 75%),
+      linear-gradient(-45deg, transparent 75%, #334155 75%);
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 8px; }
+
+  .nav-link.active {
+    color: #2661A8;
+    background-color: rgba(38,97,168,0.08);
+    font-weight: 600;
+  }
+  .dark .nav-link.active {
+    color: #D4A72C;
+    background-color: rgba(212,167,44,0.10);
+  }
+
+  .chip {
+    cursor: pointer;
+    user-select: none;
+    transition: transform .12s ease;
+  }
+  .chip:active { transform: scale(0.96); }
+
+  [x-cloak] { display: none !important; }
+</style>
+</head>
+
+<body class="bg-slate-50 text-hsam-navy dark:bg-[#0B1626] dark:text-slate-100 font-sans antialiased">
+
+<header class="fixed top-0 inset-x-0 z-40 h-16 bg-white/90 dark:bg-hsam-navy/90 backdrop-blur border-b border-slate-200 dark:border-white/10">
+  <div class="h-full max-w-[1400px] mx-auto px-4 md:px-6 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3 min-w-0">
+      <div class="w-9 h-9 rounded-lg bg-hsam-blue flex items-center justify-center shrink-0">
+        <span class="text-white font-display font-bold text-sm">HS</span>
+      </div>
+      <div class="min-w-0">
+        <p class="font-display font-bold text-sm md:text-base leading-tight truncate">Tailwind CSS — Values Reference</p>
+        <p class="text-[11px] md:text-xs text-slate-500 dark:text-slate-400 truncate">HSam E-learning · Guide by Hind Samet, Computer Science Engineer</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 md:gap-3">
+      <div class="relative hidden sm:block">
+        <input id="searchInput" type="text" placeholder="Filter classes… e.g. rounded, flex, blue"
+          class="w-56 md:w-72 text-sm px-3 py-1.5 pl-8 rounded-lg border border-slate-300 dark:border-white/10 bg-slate-100 dark:bg-white/5 focus:outline-none focus:ring-2 focus:ring-hsam-blue placeholder:text-slate-400" />
+        <svg class="w-4 h-4 absolute left-2.5 top-2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+      </div>
+      <button id="darkToggle" aria-label="Toggle dark mode" class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-300 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 transition">
+        <svg id="iconSun" class="w-4 h-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36 6.36l-.7-.7M6.34 6.34l-.7-.7m12.02 0l-.7.7M6.34 17.66l-.7.7M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <svg id="iconMoon" class="w-4 h-4 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      </button>
+      <span id="bpBadge" class="hidden md:flex items-center gap-1.5 text-xs font-mono px-2.5 py-1.5 rounded-lg bg-hsam-gold/15 text-hsam-navy dark:text-hsam-gold border border-hsam-gold/30">
+        <span class="w-1.5 h-1.5 rounded-full bg-hsam-gold"></span>
+        <span id="bpLabel">—</span>
+        <span id="bpWidth" class="text-slate-500 dark:text-slate-400">0px</span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<div class="flex max-w-[1400px] mx-auto pt-16">
+
+  <!--SIDEBAR -->
+  <aside class="hidden lg:block w-64 shrink-0 h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto py-6 pr-4 border-r border-slate-200 dark:border-white/10">
+    <nav class="space-y-1 text-sm">
+      <p class="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">Reference</p>
+      <!-- nav links injected by JS -->
+      <div id="sideNav"></div>
+    </nav>
+
+    <div class="mt-8 mx-3 p-4 rounded-xl bg-gradient-to-br from-hsam-blue to-hsam-mid text-white">
+      <p class="font-display font-semibold text-sm mb-1">Course track</p>
+      <p class="text-xs text-white/80 leading-relaxed">Part of the HSam Academy Web Development program — Tailwind CSS module, coached by Hind Samet.</p>
+    </div>
+  </aside>
+
+  <!--MAIN CONTENT -->
+  <main class="flex-1 min-w-0 px-4 md:px-8 py-8 space-y-16">
+
+    <!-- INTRODUCTION -->
+    <section id="intro" data-title="Introduction">
+      <h2 class="section-title">Introduction <span class="section-sub">what is Tailwind CSS?</span></h2>
+      <div class="mt-4 grid lg:grid-cols-3 gap-6 items-start">
+        <div class="lg:col-span-2 space-y-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          <p><span class="font-semibold text-hsam-navy dark:text-white">Tailwind CSS</span> is a <span class="font-medium text-hsam-navy dark:text-white">utility-first CSS framework</span>. Instead of writing custom CSS files and inventing class names like <span class="font-mono text-xs px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10">.card-title</span> or <span class="font-mono text-xs px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10">.btn-primary</span>, you style elements directly in your HTML using small, single-purpose classes — one class per property, such as <span class="font-mono text-xs px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10">p-4</span> for padding, <span class="font-mono text-xs px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10">text-blue-600</span> for color, or <span class="font-mono text-xs px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10">flex</span> for layout.</p>
+          <p>These utility classes are combined directly in the markup to build any design, without leaving the HTML file and without the class-naming decisions that traditional CSS requires. The whole point of this reference page is to make that concrete: every category below shows the classes rendered live, not just described in a table.</p>
+          <p class="font-medium text-hsam-navy dark:text-white pt-2">Where Tailwind is used</p>
+          <ul class="space-y-1.5 list-disc list-inside">
+            <li><span class="font-medium">Web applications & dashboards</span> — consistent spacing and color without a separate design system to maintain.</li>
+            <li><span class="font-medium">Landing pages & marketing sites</span> — fast to build and easy to make fully responsive.</li>
+            <li><span class="font-medium">Rapid prototyping</span> — try a layout directly in the markup before committing to final styles.</li>
+            <li><span class="font-medium">Component libraries</span> — many modern UI kits (including shadcn/ui and others) are built on top of Tailwind.</li>
+            <li><span class="font-medium">Any project needing responsive, dark-mode-ready UI</span> — this very page is one example: resize the window or toggle dark mode above to see it in action.</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-5">
+          <p class="control-label mb-3">Traditional CSS vs Tailwind</p>
+          <p class="text-[11px] font-mono text-slate-400 mb-1">style.css</p>
+          <pre class="text-xs font-mono bg-slate-100 dark:bg-black/30 rounded-lg p-3 mb-4 overflow-x-auto">.btn {
+  padding: 8px 16px;
+  background: #2661A8;
+  border-radius: 8px;
+  color: white;
+}</pre>
+          <p class="text-[11px] font-mono text-slate-400 mb-1">index.html — Tailwind</p>
+          <pre class="text-xs font-mono bg-slate-100 dark:bg-black/30 rounded-lg p-3 overflow-x-auto">&lt;button class="px-4 py-2
+  bg-hsam-blue rounded-lg
+  text-white"&gt;
+  Button
+&lt;/button&gt;</pre>
+          <p class="text-xs text-slate-400 mt-3">Same result — no separate CSS file, no class name to invent.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO -->
+    <section class="pt-2">
+      <p class="text-xs font-mono uppercase tracking-widest text-hsam-blue dark:text-hsam-gold mb-3">Utility-first, seen live</p>
+      <h1 class="font-display font-bold text-3xl md:text-5xl leading-tight max-w-3xl">Every Tailwind value, <span class="text-hsam-blue dark:text-hsam-gold">rendered — not just listed.</span></h1>
+      <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">This page renders each spacing, color, size, and state value using the real Tailwind class, live in your browser. Click any class chip to copy it. Use the search bar above to filter.</p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <span class="px-3 py-1.5 rounded-full bg-hsam-navy text-white dark:bg-hsam-gold dark:text-hsam-navy font-medium">16 categories</span>
+        <span class="px-3 py-1.5 rounded-full bg-slate-200 dark:bg-white/10">Click-to-copy classes</span>
+        <span class="px-3 py-1.5 rounded-full bg-slate-200 dark:bg-white/10">Live dark mode</span>
+        <span class="px-3 py-1.5 rounded-full bg-slate-200 dark:bg-white/10">Interactive Flexbox / Grid</span>
+      </div>
+    </section>
+
+    <!-- 1. SPACING -->
+    <section id="spacing" data-title="1. Spacing Scale">
+      <h2 class="section-title">1. Spacing Scale <span class="section-sub">padding · margin · gap · width · height</span></h2>
+      <p class="section-desc">Each bar below is an actual element with the class applied — its rendered pixel width is measured live.</p>
+      <div id="spacingList" class="mt-5 space-y-2 overflow-x-auto"></div>
+    </section>
+
+    <!-- 2. COLORS -->
+    <section id="colors" data-title="2. Color Palette">
+      <h2 class="section-title">2. Color Palette <span class="section-sub">22 families × 11 shades</span></h2>
+      <p class="section-desc">Pick a color family — every shade is rendered with its real Tailwind class, and its computed hex is read directly from the browser.</p>
+      <div class="mt-5 flex flex-wrap gap-2" id="colorFamilies"></div>
+      <div id="colorSwatches" class="mt-4 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-2"></div>
+    </section>
+
+    <!-- 3. FONT SIZE -->
+    <section id="font-size" data-title="3. Font Size">
+      <h2 class="section-title">3. Font Size <span class="section-sub">text-xs → text-9xl</span></h2>
+      <div id="fontSizeList" class="mt-5 space-y-3"></div>
+    </section>
+
+    <!-- 4. FONT WEIGHT -->
+    <section id="font-weight" data-title="4. Font Weight">
+      <h2 class="section-title">4. Font Weight <span class="section-sub">font-thin → font-black</span></h2>
+      <div id="fontWeightList" class="mt-5 grid sm:grid-cols-3 gap-3"></div>
+    </section>
+
+    <!-- 5. BORDER RADIUS -->
+    <section id="radius" data-title="5. Border Radius">
+      <h2 class="section-title">5. Border Radius <span class="section-sub">rounded-none → rounded-full</span></h2>
+      <div id="radiusList" class="mt-5 grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-3"></div>
+    </section>
+
+    <!-- 6. SHADOW -->
+    <section id="shadow" data-title="6. Box Shadow">
+      <h2 class="section-title">6. Box Shadow <span class="section-sub">shadow-sm → shadow-2xl</span></h2>
+      <div id="shadowList" class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-8"></div>
+    </section>
+
+    <!-- 7. BREAKPOINTS -->
+    <section id="breakpoints" data-title="7. Responsive Breakpoints">
+      <h2 class="section-title">7. Responsive Breakpoints <span class="section-sub">mobile-first prefixes</span></h2>
+      <p class="section-desc">Resize your browser window — the badge at the top right of the page tracks your current breakpoint live.</p>
+      <div id="bpTable" class="mt-5 grid sm:grid-cols-5 gap-3"></div>
+    </section>
+
+    <!-- 8. FLEXBOX -->
+    <section id="flexbox" data-title="8. Flexbox Utilities">
+      <h2 class="section-title">8. Flexbox Utilities <span class="section-sub">interactive playground</span></h2>
+      <div class="mt-5 grid md:grid-cols-2 gap-3 mb-4">
+        <div>
+          <p class="control-label">justify-*</p>
+          <div id="justifyControls" class="flex flex-wrap gap-2"></div>
+        </div>
+        <div>
+          <p class="control-label">items-*</p>
+          <div id="itemsControls" class="flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+      <div class="rounded-xl border border-slate-200 dark:border-white/10 p-4 bg-white dark:bg-white/5">
+        <div id="flexDemo" class="flex h-32 gap-2 bg-slate-100 dark:bg-white/5 rounded-lg p-3 transition-all"></div>
+      </div>
+      <p id="flexClassOut" class="mt-3 font-mono text-xs chip inline-block px-3 py-1.5 rounded-md bg-hsam-navy text-white dark:bg-hsam-gold dark:text-hsam-navy"></p>
+    </section>
+
+    <!-- 9. GRID -->
+    <section id="grid" data-title="9. Grid Utilities">
+      <h2 class="section-title">9. Grid Utilities <span class="section-sub">interactive playground</span></h2>
+      <p class="control-label mt-4">grid-cols-*</p>
+      <div id="gridControls" class="flex flex-wrap gap-2 mt-2"></div>
+      <div class="rounded-xl border border-slate-200 dark:border-white/10 p-4 bg-white dark:bg-white/5 mt-4">
+        <div id="gridDemo" class="grid gap-2"></div>
+      </div>
+      <p id="gridClassOut" class="mt-3 font-mono text-xs chip inline-block px-3 py-1.5 rounded-md bg-hsam-navy text-white dark:bg-hsam-gold dark:text-hsam-navy"></p>
+    </section>
+
+    <!-- 10. POSITION & DISPLAY -->
+    <section id="position" data-title="10. Position & Display">
+      <h2 class="section-title">10. Position & Display <span class="section-sub">static · relative · absolute · sticky · fixed</span></h2>
+      <div class="mt-5 grid md:grid-cols-2 gap-6">
+        <div>
+          <p class="control-label mb-2">relative + absolute badge</p>
+          <div class="relative h-28 rounded-xl bg-hsam-mid/10 border border-dashed border-hsam-mid/40 flex items-center justify-center text-sm text-slate-500">
+            <span class="chip absolute top-2 right-2 bg-hsam-gold text-hsam-navy text-xs font-mono px-2 py-1 rounded-md" data-copy="absolute top-0 right-0">absolute</span>
+            parent: <span class="font-mono ml-1">relative</span>
+          </div>
+        </div>
+        <div>
+          <p class="control-label mb-2">display: block / inline-block / flex / hidden</p>
+          <div class="space-y-2 text-sm">
+            <div class="block bg-hsam-blue/10 px-3 py-1.5 rounded-md chip" data-copy="block">block <span class="font-mono text-xs text-slate-500">block</span></div>
+            <div><span class="inline-block bg-hsam-blue/10 px-3 py-1.5 rounded-md chip" data-copy="inline-block">inline-block A</span> <span class="inline-block bg-hsam-blue/10 px-3 py-1.5 rounded-md ml-1">inline-block B</span></div>
+            <div class="flex gap-1.5 chip" data-copy="flex"><span class="bg-hsam-blue/10 px-3 py-1.5 rounded-md">flex A</span><span class="bg-hsam-blue/10 px-3 py-1.5 rounded-md">flex B</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. WIDTH & HEIGHT -->
+    <section id="sizing" data-title="11. Width & Height">
+      <h2 class="section-title">11. Width & Height <span class="section-sub">fractions & keywords</span></h2>
+      <p class="section-desc">Bars measured against a fixed-width container — percentages are computed live, not hardcoded.</p>
+      <div id="sizingList" class="mt-5 space-y-2"></div>
+    </section>
+
+    <!-- 12. OPACITY -->
+    <section id="opacity" data-title="12. Opacity">
+      <h2 class="section-title">12. Opacity <span class="section-sub">opacity-0 → opacity-100</span></h2>
+      <div id="opacityList" class="mt-5 grid grid-cols-4 sm:grid-cols-8 gap-3 bg-checker rounded-xl p-4"></div>
+    </section>
+
+    <!-- 13. Z-INDEX -->
+    <section id="zindex" data-title="13. Z-Index">
+      <h2 class="section-title">13. Z-Index <span class="section-sub">stacking order</span></h2>
+      <div id="zIndexDemo" class="relative h-40 mt-5"></div>
+    </section>
+
+    <!-- 14. TRANSITIONS -->
+    <section id="transitions" data-title="14. Transitions & Animation">
+      <h2 class="section-title">14. Transitions & Animation <span class="section-sub">hover to test duration</span></h2>
+      <p class="control-label mt-4">duration-* <span class="normal-case font-normal text-slate-400">(hover each box)</span></p>
+      <div id="durationList" class="mt-2 flex flex-wrap gap-4"></div>
+      <p class="control-label mt-8">built-in animations</p>
+      <div id="animationList" class="mt-2 flex flex-wrap gap-6"></div>
+    </section>
+
+    <!-- 15. STATES -->
+    <section id="states" data-title="15. State Variants">
+      <h2 class="section-title">15. State Variants <span class="section-sub">hover · focus · active · disabled · odd/even · dark</span></h2>
+      <div class="mt-5 flex flex-wrap gap-4 items-center">
+        <button class="chip px-4 py-2 rounded-lg bg-hsam-blue text-white hover:bg-hsam-mid focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-hsam-gold active:scale-95 transition" data-copy="hover:bg-hsam-mid focus:ring-2 active:scale-95">Hover / Focus / Active me</button>
+        <button disabled class="px-4 py-2 rounded-lg bg-hsam-blue text-white disabled:opacity-40 disabled:cursor-not-allowed" data-copy="disabled:opacity-40">Disabled</button>
+      </div>
+      <div class="mt-5 rounded-lg overflow-hidden border border-slate-200 dark:border-white/10 max-w-sm">
+        <div class="odd:bg-slate-100 even:bg-white dark:odd:bg-white/5 dark:even:bg-transparent px-3 py-2 text-sm chip" data-copy="odd:bg-slate-100">Row 1 · odd</div>
+        <div class="odd:bg-slate-100 even:bg-white dark:odd:bg-white/5 dark:even:bg-transparent px-3 py-2 text-sm chip" data-copy="even:bg-white">Row 2 · even</div>
+        <div class="odd:bg-slate-100 even:bg-white dark:odd:bg-white/5 dark:even:bg-transparent px-3 py-2 text-sm">Row 3 · odd</div>
+      </div>
+      <p class="section-desc mt-4">Toggle the sun/moon icon in the header — every <span class="font-mono">dark:</span> class on this entire page updates live.</p>
+    </section>
+
+    <!-- 16. COMBINED EXAMPLE -->
+    <section id="combined" data-title="16. Combined Example">
+      <h2 class="section-title">16. Full Combined Example</h2>
+      <p class="section-desc">A responsive, interactive card combining spacing, color, radius, shadow, dark mode and transitions.</p>
+      <div class="mt-6 flex justify-center">
+        <div class="max-w-sm w-full mx-auto bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">Card Title</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Some description text goes here.</p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-hsam-blue dark:text-hsam-gold font-medium">Learn more</span>
+            <button class="bg-hsam-blue hover:bg-hsam-mid text-white px-4 py-2 rounded-lg transition">Action</button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 flex justify-center">
+        <p id="combinedCode" class="chip font-mono text-xs max-w-2xl px-4 py-3 rounded-lg bg-hsam-navy text-slate-200 dark:bg-black/40 leading-relaxed"></p>
+      </div>
+    </section>
+
+    <footer class="pt-8 pb-16 border-t border-slate-200 dark:border-white/10 text-sm text-slate-500 dark:text-slate-400">
+      <p>HSam E-learning — Web Development track · Tailwind CSS reference guide by <span class="font-medium text-hsam-navy dark:text-hsam-gold">Hind Samet</span>, Computer Science Engineer.</p>
+    </footer>
+  </main>
+</div>
+
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg bg-hsam-navy text-white text-sm shadow-lg opacity-0 pointer-events-none transition-opacity duration-200 z-50">Copied!</div>
+
+<script>
+/* Utility helpers*/
+const $ = (sel, root=document) => root.querySelector(sel);
+const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
+
+function rgbToHex(rgb) {
+  const m = rgb.match(/\d+/g);
+  if (!m) return rgb;
+  return '#' + m.slice(0,3).map(n => (+n).toString(16).padStart(2,'0')).join('');
+}
+
+function showToast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.remove('opacity-0');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => t.classList.add('opacity-0'), 1100);
+}
+
+function copyText(text) {
+  navigator.clipboard?.writeText(text).catch(()=>{});
+  showToast('Copied "' + text + '"');
+}
+
+// Delegate click-to-copy for any element with data-copy or .chip + text content
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-copy], .chip');
+  if (!el) return;
+  const text = el.getAttribute('data-copy') || el.textContent.trim();
+  if (text) copyText(text);
+});
+
+/*Section title styling (added via JS to keep HTML lighter) */
+document.querySelectorAll('.section-title').forEach(h => {
+  h.classList.add('font-display','font-bold','text-2xl','md:text-3xl','flex','flex-wrap','items-baseline','gap-3');
+});
+document.querySelectorAll('.section-sub').forEach(s => {});
+$$('.section-title').forEach(h => {
+  const spans = h.querySelectorAll('span');
+  spans.forEach(s => s.classList.add('text-sm','font-sans','font-normal','text-slate-400'));
+});
+$$('.section-desc').forEach(p => p.classList.add('mt-2','text-sm','text-slate-500','dark:text-slate-400','max-w-2xl'));
+$$('.control-label').forEach(p => p.classList.add('text-xs','font-mono','uppercase','tracking-wide','text-slate-400'));
+
+/* 1. SPACING */
+const spacingScale = [
+  ['0','0px'],['0.5','2px'],['1','4px'],['1.5','6px'],['2','8px'],['2.5','10px'],['3','12px'],
+  ['3.5','14px'],['4','16px'],['5','20px'],['6','24px'],['7','28px'],['8','32px'],['9','36px'],
+  ['10','40px'],['11','44px'],['12','48px'],['14','56px'],['16','64px'],['20','80px'],['24','96px'],
+  ['28','112px'],['32','128px'],['36','144px'],['40','160px'],['44','176px'],['48','192px'],
+  ['52','208px'],['56','224px'],['60','240px'],['64','256px'],['72','288px'],['80','320px'],['96','384px']
+];
+const spacingList = $('#spacingList');
+spacingScale.forEach(([suffix, expected]) => {
+  const row = document.createElement('div');
+  row.className = 'flex items-center gap-3 text-sm searchable';
+  row.dataset.search = `p-${suffix} w-${suffix} m-${suffix} gap-${suffix}`;
+  row.innerHTML = `
+    <span class="chip font-mono w-16 shrink-0 text-xs px-2 py-1 rounded bg-slate-200 dark:bg-white/10" data-copy="w-${suffix}">w-${suffix}</span>
+    <div class="h-5 rounded bg-hsam-blue dark:bg-hsam-gold w-[${expected}]" style="width:${expected}"></div>
+    <span class="text-xs text-slate-400 font-mono measured">${expected}</span>
+  `;
+  spacingList.appendChild(row);
+});
+
+/* 2. COLORS*/
+const colorFamilies = ['slate','gray','zinc','neutral','stone','red','orange','amber','yellow','lime','green','emerald','teal','cyan','sky','blue','indigo','violet','purple','fuchsia','pink','rose'];
+const shades = [50,100,200,300,400,500,600,700,800,900,950];
+const familyWrap = $('#colorFamilies');
+let activeFamily = 'blue';
+
+function renderColorFamily(fam) {
+  activeFamily = fam;
+  $$('.fam-btn').forEach(b => b.classList.toggle('bg-hsam-navy', b.dataset.fam === fam));
+  $$('.fam-btn').forEach(b => b.classList.toggle('text-white', b.dataset.fam === fam));
+  $$('.fam-btn').forEach(b => b.classList.toggle('dark:bg-hsam-gold', b.dataset.fam === fam));
+  $$('.fam-btn').forEach(b => b.classList.toggle('dark:text-hsam-navy', b.dataset.fam === fam));
+
+  const wrap = $('#colorSwatches');
+  wrap.innerHTML = '';
+  shades.forEach(shade => {
+    const cls = `bg-${fam}-${shade}`;
+    const cell = document.createElement('div');
+    cell.className = 'searchable';
+    cell.dataset.search = cls;
+    cell.innerHTML = `
+      <div class="chip ${cls} h-16 rounded-lg border border-black/5" data-copy="${cls}"></div>
+      <p class="mt-1 text-[11px] font-mono text-center">${shade}</p>
+      <p class="text-[10px] text-center text-slate-400 font-mono hex-out">…</p>
+    `;
+    wrap.appendChild(cell);
+    requestAnimationFrame(() => {
+      const swatch = cell.querySelector('.'+cls.replace(/\//g,'\\/'));
+      const hex = rgbToHex(getComputedStyle(swatch).backgroundColor);
+      cell.querySelector('.hex-out').textContent = hex;
+    });
+  });
+}
+
+colorFamilies.forEach(fam => {
+  const btn = document.createElement('button');
+  btn.className = 'fam-btn text-xs font-mono px-3 py-1.5 rounded-full bg-slate-200 dark:bg-white/10 hover:opacity-80 transition';
+  btn.dataset.fam = fam;
+  btn.textContent = fam;
+  btn.onclick = () => renderColorFamily(fam);
+  familyWrap.appendChild(btn);
+});
+renderColorFamily('blue');
+
+/* 3. FONT SIZE*/
+const fontSizes = ['text-xs','text-sm','text-base','text-lg','text-xl','text-2xl','text-3xl','text-4xl','text-5xl','text-6xl','text-7xl','text-8xl','text-9xl'];
+const fontSizeList = $('#fontSizeList');
+fontSizes.forEach(cls => {
+  const row = document.createElement('div');
+  row.className = 'flex items-baseline gap-4 searchable';
+  row.dataset.search = cls;
+  row.innerHTML = `
+    <span class="chip font-mono w-24 shrink-0 text-xs px-2 py-1 rounded bg-slate-200 dark:bg-white/10" data-copy="${cls}">${cls}</span>
+    <span class="${cls} font-display font-semibold truncate">Aa Bb Cc</span>
+    <span class="text-xs text-slate-400 font-mono ml-auto measured shrink-0"></span>
+  `;
+  fontSizeList.appendChild(row);
+  requestAnimationFrame(() => {
+    const el = row.querySelector('.'+cls);
+    row.querySelector('.measured').textContent = getComputedStyle(el).fontSize;
+  });
+});
+
+/* 4. FONT WEIGHT*/
+const fontWeights = ['font-thin','font-extralight','font-light','font-normal','font-medium','font-semibold','font-bold','font-extrabold','font-black'];
+const fontWeightList = $('#fontWeightList');
+fontWeights.forEach(cls => {
+  const box = document.createElement('div');
+  box.className = 'searchable rounded-lg border border-slate-200 dark:border-white/10 p-3 flex items-center justify-between';
+  box.dataset.search = cls;
+  box.innerHTML = `
+    <span class="${cls} text-lg">Weight</span>
+    <span class="chip font-mono text-[11px] px-2 py-1 rounded bg-slate-200 dark:bg-white/10 measured" data-copy="${cls}">${cls}</span>
+  `;
+  fontWeightList.appendChild(box);
+  requestAnimationFrame(() => {
+    const el = box.querySelector('.'+cls);
+    box.querySelector('.measured').textContent = cls + ' · ' + getComputedStyle(el).fontWeight;
+  });
+});
+
+/*5. BORDER RADIUS */
+const radii = ['rounded-none','rounded-sm','rounded','rounded-md','rounded-lg','rounded-xl','rounded-2xl','rounded-3xl','rounded-full'];
+const radiusList = $('#radiusList');
+radii.forEach(cls => {
+  const cell = document.createElement('div');
+  cell.className = 'searchable text-center';
+  cell.dataset.search = cls;
+  cell.innerHTML = `
+    <div class="chip ${cls} h-16 w-full bg-hsam-blue/80 dark:bg-hsam-gold/80" data-copy="${cls}"></div>
+    <p class="mt-1 text-[11px] font-mono">${cls}</p>
+  `;
+  radiusList.appendChild(cell);
+});
+
+/* 6. SHADOW*/
+const shadows = ['shadow-sm','shadow','shadow-md','shadow-lg','shadow-xl','shadow-2xl','shadow-inner','shadow-none'];
+const shadowList = $('#shadowList');
+shadows.forEach(cls => {
+  const cell = document.createElement('div');
+  cell.className = 'searchable text-center';
+  cell.dataset.search = cls;
+  cell.innerHTML = `
+    <div class="chip ${cls} h-16 rounded-lg bg-white dark:bg-slate-700" data-copy="${cls}"></div>
+    <p class="mt-2 text-[11px] font-mono">${cls}</p>
+  `;
+  shadowList.appendChild(cell);
+});
+
+/* 7. BREAKPOINTS */
+const bps = [['sm','640px'],['md','768px'],['lg','1024px'],['xl','1280px'],['2xl','1536px']];
+const bpTable = $('#bpTable');
+bps.forEach(([name, px]) => {
+  const cell = document.createElement('div');
+  cell.className = 'rounded-lg border border-slate-200 dark:border-white/10 p-3 text-center bp-cell';
+  cell.dataset.bp = name;
+  cell.innerHTML = `<p class="font-mono font-semibold text-hsam-blue dark:text-hsam-gold">${name}:</p><p class="text-xs text-slate-400 mt-1">≥ ${px}</p>`;
+  bpTable.appendChild(cell);
+});
+
+function updateBreakpoint() {
+  const w = window.innerWidth;
+  let label = '<640 (base)';
+  $$('.bp-cell').forEach(c => c.classList.remove('ring-2','ring-hsam-gold'));
+  if (w >= 1536) label = '2xl';
+  else if (w >= 1280) label = 'xl';
+  else if (w >= 1024) label = 'lg';
+  else if (w >= 768) label = 'md';
+  else if (w >= 640) label = 'sm';
+  const active = $(`.bp-cell[data-bp="${label}"]`);
+  if (active) active.classList.add('ring-2','ring-hsam-gold');
+  $('#bpLabel').textContent = label;
+  $('#bpWidth').textContent = w + 'px';
+}
+window.addEventListener('resize', updateBreakpoint);
+updateBreakpoint();
+
+/* 8. FLEXBOX PLAYGROUND*/
+const justifyOpts = ['justify-start','justify-end','justify-center','justify-between','justify-around','justify-evenly'];
+const itemsOpts = ['items-start','items-end','items-center','items-baseline','items-stretch'];
+let curJustify = 'justify-between', curItems = 'items-center';
+
+function buildControlBtns(container, opts, current, onPick) {
+  container.innerHTML = '';
+  opts.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = 'text-xs font-mono px-2.5 py-1 rounded-md border transition ' +
+      (opt === current ? 'bg-hsam-blue text-white border-hsam-blue' : 'bg-transparent border-slate-300 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10');
+    b.textContent = opt;
+    b.onclick = () => onPick(opt);
+    container.appendChild(b);
+  });
+}
+
+function renderFlexDemo() {
+  buildControlBtns($('#justifyControls'), justifyOpts, curJustify, (v) => { curJustify = v; renderFlexDemo(); });
+  buildControlBtns($('#itemsControls'), itemsOpts, curItems, (v) => { curItems = v; renderFlexDemo(); });
+  const demo = $('#flexDemo');
+  demo.className = `flex h-32 gap-2 bg-slate-100 dark:bg-white/5 rounded-lg p-3 transition-all ${curJustify} ${curItems}`;
+  demo.innerHTML = '';
+  const heights = ['h-10','h-16','h-8'];
+  [0,1,2].forEach(i => {
+    const box = document.createElement('div');
+    box.className = `w-14 ${heights[i]} rounded-md bg-hsam-blue dark:bg-hsam-gold flex items-center justify-center text-white dark:text-hsam-navy text-xs font-mono`;
+    box.textContent = i+1;
+    demo.appendChild(box);
+  });
+  $('#flexClassOut').textContent = `flex ${curJustify} ${curItems}`;
+}
+renderFlexDemo();
+
+/* 9. GRID PLAYGROUND*/
+const colOpts = ['grid-cols-1','grid-cols-2','grid-cols-3','grid-cols-4','grid-cols-6','grid-cols-12'];
+let curCols = 'grid-cols-4';
+function renderGridDemo() {
+  buildControlBtns($('#gridControls'), colOpts, curCols, (v) => { curCols = v; renderGridDemo(); });
+  const demo = $('#gridDemo');
+  demo.className = `grid gap-2 ${curCols}`;
+  demo.innerHTML = '';
+  const n = parseInt(curCols.split('-').pop());
+  const count = Math.min(n, 12);
+  for (let i=0;i<count;i++) {
+    const cell = document.createElement('div');
+    cell.className = 'h-10 rounded-md bg-hsam-blue/80 dark:bg-hsam-gold/80 flex items-center justify-center text-white dark:text-hsam-navy text-[11px] font-mono';
+    cell.textContent = i+1;
+    demo.appendChild(cell);
+  }
+  $('#gridClassOut').textContent = `grid ${curCols}`;
+}
+renderGridDemo();
+
+/* 11. WIDTH & HEIGHT (fractions) */
+const sizes = [['w-full','100%'],['w-3/4','75%'],['w-2/3','66.67%'],['w-1/2','50%'],['w-1/3','33.33%'],['w-1/4','25%'],['w-1/5','20%']];
+const sizingList = $('#sizingList');
+sizes.forEach(([cls]) => {
+  const row = document.createElement('div');
+  row.className = 'searchable';
+  row.dataset.search = cls;
+  row.innerHTML = `
+    <div class="flex items-center gap-3 text-sm mb-1">
+      <span class="chip font-mono w-20 shrink-0 text-xs px-2 py-1 rounded bg-slate-200 dark:bg-white/10" data-copy="${cls}">${cls}</span>
+      <span class="text-xs text-slate-400 font-mono measured"></span>
+    </div>
+    <div class="w-full bg-slate-100 dark:bg-white/5 rounded"><div class="${cls} h-5 rounded bg-hsam-blue dark:bg-hsam-gold"></div></div>
+  `;
+  sizingList.appendChild(row);
+  requestAnimationFrame(() => {
+    const bar = row.querySelector('.'+cls.replace('/','\\/'));
+    const parent = bar.parentElement;
+    const pct = (bar.getBoundingClientRect().width / parent.getBoundingClientRect().width * 100).toFixed(2);
+    row.querySelector('.measured').textContent = pct + '% of container';
+  });
+});
+
+/* 12. OPACITY */
+const opacities = [0,10,20,30,40,50,60,70,80,90,100];
+const opacityList = $('#opacityList');
+opacities.forEach(v => {
+  const cls = `opacity-${v}`;
+  const cell = document.createElement('div');
+  cell.className = 'text-center searchable';
+  cell.dataset.search = cls;
+  cell.innerHTML = `<div class="chip ${cls} h-14 rounded-lg bg-hsam-blue dark:bg-hsam-gold" data-copy="${cls}"></div><p class="text-[10px] font-mono mt-1">${cls}</p>`;
+  opacityList.appendChild(cell);
+});
+
+/* 13. Z-INDEX*/
+const zVals = [['z-10','top-0 left-0'],['z-20','top-4 left-8'],['z-30','top-8 left-16'],['z-40','top-12 left-24'],['z-50','top-16 left-32']];
+const zDemo = $('#zIndexDemo');
+zVals.forEach(([cls, pos], i) => {
+  const box = document.createElement('div');
+  box.className = `chip absolute ${pos} ${cls} w-24 h-16 rounded-lg shadow-md flex items-center justify-center text-xs font-mono text-white`;
+  box.style.backgroundColor = ['#2661A8','#1A3A63','#12233D','#D4A72C','#0EA5E9'][i];
+  box.dataset.copy = cls;
+  box.textContent = cls;
+  zDemo.appendChild(box);
+});
+
+/* 14. TRANSITIONS & ANIMATIONS*/
+const durations = ['duration-75','duration-150','duration-300','duration-500','duration-700','duration-1000'];
+const durationList = $('#durationList');
+durations.forEach(cls => {
+  const box = document.createElement('div');
+  box.className = `chip w-20 h-16 rounded-lg bg-hsam-blue dark:bg-hsam-gold flex items-center justify-center text-white dark:text-hsam-navy text-[10px] font-mono transition-transform ${cls} hover:scale-110 cursor-pointer`;
+  box.dataset.copy = cls;
+  box.textContent = cls;
+  durationList.appendChild(box);
+});
+const animations = ['animate-spin','animate-ping','animate-pulse','animate-bounce'];
+const animationList = $('#animationList');
+animations.forEach(cls => {
+  const wrap = document.createElement('div');
+  wrap.className = 'flex flex-col items-center gap-2';
+  wrap.innerHTML = `<div class="chip w-12 h-12 rounded-lg bg-hsam-blue dark:bg-hsam-gold ${cls}" data-copy="${cls}"></div><span class="text-[11px] font-mono text-slate-400">${cls}</span>`;
+  animationList.appendChild(wrap);
+});
+
+/* 16. COMBINED EXAMPLE — code string */
+$('#combinedCode').textContent =
+`<div class="max-w-sm mx-auto bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300">…</div>`;
+
+/* SIDEBAR NAV + scroll spy */
+const sections = $$('main section[id]');
+const sideNav = $('#sideNav');
+sections.forEach(sec => {
+  const a = document.createElement('a');
+  a.href = '#' + sec.id;
+  a.className = 'nav-link block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 truncate';
+  a.textContent = sec.dataset.title;
+  a.dataset.target = sec.id;
+  sideNav.appendChild(a);
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      $$('.nav-link').forEach(l => l.classList.remove('active'));
+      const link = $(`.nav-link[data-target="${entry.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => io.observe(s));
+
+/* DARK MODE TOGGLE */
+$('#darkToggle').addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+});
+
+/* SEARCH FILTER */
+$('#searchInput').addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  $$('.searchable').forEach(el => {
+    const match = !q || (el.dataset.search || '').toLowerCase().includes(q);
+    el.style.display = match ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
